@@ -1,4 +1,5 @@
 import 'package:chat_app/base/base.dart';
+import 'package:chat_app/ui/home/home_screen.dart';
 import 'package:chat_app/validation_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -131,5 +132,10 @@ class _LoginScreenState extends BaseState<LoginScreen, LoginViewModel>
       return;
     }
     viewModel.login(emailController.text, passwordController.text);
+  }
+
+  @override
+  void goToHome() {
+    Navigator.pushReplacementNamed(context, HomeScreen.routeName);
   }
 }

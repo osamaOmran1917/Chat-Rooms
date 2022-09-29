@@ -1,3 +1,4 @@
+import 'package:chat_app/ui/home/home_screen.dart';
 import 'package:chat_app/ui/login/login_screen.dart';
 import 'package:chat_app/ui/registeration/register_viewModel.dart';
 import 'package:chat_app/validation_utils.dart';
@@ -21,10 +22,11 @@ class _RegisterScreenState extends BaseState<RegisterScreen, RegisterViewModel>
   var formKye = GlobalKey<FormState>();
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
+  var fullNameController = TextEditingController();
+  var userNameController = TextEditingController();
 
   @override
   RegisterViewModel initViewModel() {
-    // TODO: implement initViewModel
     return RegisterViewModel();
   }
 
@@ -58,6 +60,7 @@ class _RegisterScreenState extends BaseState<RegisterScreen, RegisterViewModel>
                           height: MediaQuery.of(context).size.height * .25,
                         ),
                         TextFormField(
+                          controller: fullNameController,
                           validator: (text) {
                             if (text == null || text.trim().isEmpty) {
                               return 'Please Enter Full Name';
@@ -69,6 +72,7 @@ class _RegisterScreenState extends BaseState<RegisterScreen, RegisterViewModel>
                           ),
                         ),
                         TextFormField(
+                          controller: userNameController,
                           validator: (text) {
                             if (text == null || text.trim().isEmpty) {
                               return 'Please Enter User Name';
@@ -156,6 +160,12 @@ class _RegisterScreenState extends BaseState<RegisterScreen, RegisterViewModel>
     if (formKye.currentState?.validate() == false) {
       return;
     }
-    viewModel.register(emailController.text, passwordController.text);
+    viewModel.register(emailController.text, passwordController.text,
+        userNameController.text, fullNameController.text);
+  }
+
+  @override
+  void goToHome() {
+    Navigator.pushReplacementNamed(context, HomeScreen.routeName);
   }
 }
