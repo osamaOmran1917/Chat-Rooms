@@ -1,3 +1,4 @@
+import 'package:chat_app/model/message.dart';
 import 'package:chat_app/model/room.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -8,16 +9,16 @@ class MyDataBase {
     return FirebaseFirestore.instance
         .collection(MyUser.collectionName)
         .withConverter<MyUser>(
-            fromFirestore: (doc, _) => MyUser.fromFireStore(doc.data()!),
-            toFirestore: (user, options) => user.toFireStore());
+        fromFirestore: (doc, _) => MyUser.fromFireStore(doc.data()!),
+        toFirestore: (user, options) => user.toFireStore());
   }
 
   static CollectionReference<Room> getRoomsCollection() {
     return FirebaseFirestore.instance
         .collection(Room.collectionName)
         .withConverter<Room>(
-            fromFirestore: (doc, _) => Room.fromFireStore(doc.data()!),
-            toFirestore: (room, options) => room.toFireStore());
+        fromFirestore: (doc, _) => Room.fromFireStore(doc.data()!),
+        toFirestore: (room, options) => room.toFireStore());
   }
 
   static Future<MyUser?> insertUser(MyUser user) async {
@@ -38,5 +39,29 @@ class MyDataBase {
     var docRef = getRoomsCollection().doc();
     room.id = docRef.id;
     return docRef.set(room);
+  }
+
+  static Future<List<Room>> loadRooms() async {
+    var querySnapshot = await getRoomsCollection().get();
+    return querySnapshot.docs
+        .map((queryDocSnapshot) => queryDocSnapshot.data())
+        .toList();
+  }
+
+  static CollectionReference<Message> getMessageCollection(String roomId) {
+    return FirebaseFirestore.instance
+        .collection(Room.collectionName)
+        .doc(roomId)
+        .collection(Message.collectionName)
+        .withConverter<Message>(
+            fromFirestore: (snapshot, options) =>
+                Message.fromFirestore(snapshot.data()!),
+            toFirestore: (message, options) => message.toFireStore());
+  }
+
+  static Future<void> sendMessage(String roomId, Message message) {
+    var messageDoc = getMessageCollection(roomId).doc();
+    message.id = messageDoc.id;
+    return messageDoc.set(message);
   }
 }

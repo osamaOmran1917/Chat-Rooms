@@ -30,4 +30,13 @@ class LoginViewModel extends BaseViewModel<LoginNavigator> {
       navigator?.showMessageDialog('Wrong Username Or Password');
     }
   }
+
+  void checkLogedInUser() async {
+    if (auth.currentUser != null) {
+      var retrievedUser =
+          await MyDataBase.getUserById(auth.currentUser?.uid ?? '');
+      SharedData.user = retrievedUser;
+      navigator?.goToHome();
+    }
+  }
 }
