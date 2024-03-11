@@ -1,43 +1,26 @@
 {
   "project_info": {
-    "project_number": "943140379339",
-    "project_id": "scorpion-chat-app",
-    "storage_bucket": "scorpion-chat-app.appspot.com"
+    "project_number": "1001153036141",
+    "project_id": "chat-app-d3b52",
+    "storage_bucket": "chat-app-d3b52.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:943140379339:android:6743e5d09f565c8b58994e",
+        "mobilesdk_app_id": "1:1001153036141:android:65eae8d819c96e61746464",
         "android_client_info": {
           "package_name": "com.example.chat_app"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "943140379339-u5farrpv4vikou05tmcpit863v66b5jp.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCEAUp8lM5SJcsySPe-beU2X5WIOI638MU"
+          "current_key": "AIzaSyCO-Lns3G6cGNkFNz_xytmi85ZmjEH4ftI"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "943140379339-u5farrpv4vikou05tmcpit863v66b5jp.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "943140379339-iaf8g68k7cpua12edq2mpiadl3luauf2.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.chatApp"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

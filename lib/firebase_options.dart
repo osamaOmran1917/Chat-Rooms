@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -49,22 +46,30 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCAZSAEQWRMMTLHTl2lOMlbC2TSgNe8GGM',
+    appId: '1:1001153036141:web:7f26e2b73f645601746464',
+    messagingSenderId: '1001153036141',
+    projectId: 'chat-app-d3b52',
+    authDomain: 'chat-app-d3b52.firebaseapp.com',
+    storageBucket: 'chat-app-d3b52.appspot.com',
+    measurementId: 'G-9V99Y9EGBN',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCEAUp8lM5SJcsySPe-beU2X5WIOI638MU',
-    appId: '1:943140379339:android:6743e5d09f565c8b58994e',
-    messagingSenderId: '943140379339',
-    projectId: 'scorpion-chat-app',
-    storageBucket: 'scorpion-chat-app.appspot.com',
+    apiKey: 'AIzaSyCO-Lns3G6cGNkFNz_xytmi85ZmjEH4ftI',
+    appId: '1:1001153036141:android:65eae8d819c96e61746464',
+    messagingSenderId: '1001153036141',
+    projectId: 'chat-app-d3b52',
+    storageBucket: 'chat-app-d3b52.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAm4QcA70V9yEywGDLm_Z3mkZ-s3aKA7bc',
-    appId: '1:943140379339:ios:5592e5f290420ae258994e',
-    messagingSenderId: '943140379339',
-    projectId: 'scorpion-chat-app',
-    storageBucket: 'scorpion-chat-app.appspot.com',
-    iosClientId:
-        '943140379339-iaf8g68k7cpua12edq2mpiadl3luauf2.apps.googleusercontent.com',
+    apiKey: 'AIzaSyDtrq31uUQc5DKiHOZLEjwHNaX7Tp0CW3w',
+    appId: '1:1001153036141:ios:c6660165b603a572746464',
+    messagingSenderId: '1001153036141',
+    projectId: 'chat-app-d3b52',
+    storageBucket: 'chat-app-d3b52.appspot.com',
     iosBundleId: 'com.example.chatApp',
   );
 }
